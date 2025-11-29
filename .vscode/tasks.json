@@ -1,0 +1,30 @@
+{
+    // See https://go.dev/doc/gopath_code for details on Go build and test tasks
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "go build ./...",
+            "group": "build",
+            "problemMatcher": ["$go"]
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "go test -v ./...",
+            "group": "test",
+            "problemMatcher": ["$go"]
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "go run main.go",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$go"]
+        }
+    ]
+}

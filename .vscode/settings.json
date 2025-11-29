@@ -1,0 +1,20 @@
+{
+    "go.toolsEnvVars": {
+        "GO111MODULE": "on"
+    },
+    "go.useLanguageServer": true,
+    "go.testOnSave": true,
+    "go.formatTool": "gofmt",
+    "go.lintTool": "golint",
+    "go.testFlags": ["-v"],
+    "go.buildOnSave": "package",
+    "go.lintOnSave": "package",
+    "go.vetOnSave": "package",
+    "go.testTimeout": "30s",
+    "go.coverOnSave": false,
+    "go.enableCodeLens": {
+        "references": true,
+        "runtest": true
+    },
+    "go.testExplorer.showOutput": "always"
+}
