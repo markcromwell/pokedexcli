@@ -130,6 +130,7 @@ func commandCatch(commands map[string]cliCommand, cfg *config, param []string) e
 
 		cfg.caughtPokemons[pokemon.Name] = pokemon
 		fmt.Printf("Congratulations! You caught %s!\n", pokemon.Name)
+		fmt.Printf("You may now inspect it with the inspect command.\n")
 	} else {
 		fmt.Printf("Oh no! %s escaped the Pokeball!\n", pokemon.Name)
 	}
@@ -190,6 +191,26 @@ func commandInspect(commands map[string]cliCommand, cfg *config, param []string)
 	return nil
 }
 
+// commandPokedex takes no parameters and lists all caught Pokemon by name.
+// Pokedex > pokedex
+//Your Pokedex:
+// - pidgey
+// - caterpie
+
+func commandPokedex(commands map[string]cliCommand, cfg *config, param []string) error {
+	if len(cfg.caughtPokemons) == 0 {
+		fmt.Println("You have not caught any Pokemon yet.")
+		return nil
+	}
+
+	fmt.Println("Your Pokedex:")
+	for name := range cfg.caughtPokemons {
+		fmt.Printf(" - %s\n", name)
+	}
+
+	return nil
+}
+
 type cliCommand struct {
 	name        string
 	description string
@@ -231,6 +252,11 @@ var commands = map[string]cliCommand{
 		name:        "inspect",
 		description: "Inspect a caught Pokemon",
 		callback:    commandInspect,
+	},
+	"pokedex": {
+		name:        "pokedex",
+		description: "List all caught Pokemon",
+		callback:    commandPokedex,
 	},
 }
 
